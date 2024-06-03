@@ -1,0 +1,72 @@
+Plymouth	Acadia	1
+Troy	Acadia	2
+Thomas Jefferson C	Acadia	3
+Hinsdale Central	Acadia	4
+Innovation Academy B	Acadia	5
+Waukee	Acadia	6
+Rockford Auburn A	Badlands	1
+Midtown	Badlands	2
+Maggie Walker A	Badlands	3
+Norris	Badlands	4
+Carbondale	Badlands	5
+John Adams A	Badlands	6
+Richard Montgomery	Carlsbad Caverns	1
+William Fremd	Carlsbad Caverns	2
+Northmont A	Carlsbad Caverns	3
+Chattahoochee B	Carlsbad Caverns	4
+Hunter B	Carlsbad Caverns	5
+Detroit Catholic Central C	Carlsbad Caverns	6
+Dallas County	Denali	1
+Winston Churchill A	Denali	2
+Johns Creek B	Denali	3
+New Brighton	Denali	4
+Rockford Auburn B	Denali	5
+Elkhorn North	Denali	6
+Hunter A	Everglades	1
+Thomas Jefferson B	Everglades	2
+Irvington A	Everglades	3
+Barrington B	Everglades	4
+Washington	Everglades	5
+Norman	Everglades	6
+Detroit Country Day	Fort McHenry	1
+Johns Creek A	Fort McHenry	2
+Parkway West	Fort McHenry	3
+Hoover B	Fort McHenry	4
+Winnebago	Fort McHenry	5
+Saint Joseph	Fort McHenry	6
+University Lab	Grand Canyon	1
+Mira Loma	Grand Canyon	2
+Heights	Grand Canyon	3
+Mercer County	Grand Canyon	4
+Thomas Jefferson D	Grand Canyon	5
+Stevenson B	Grand Canyon	6
+Kinkaid	Hot Springs	1
+Solon	Hot Springs	2
+Choate Rosemary Hall	Hot Springs	3
+Stevenson A	Hot Springs	4
+Maggie Walker B	Hot Springs	5
+Moberly	Hot Springs	6
+Thomas Jefferson A	Isle Royale	1
+Mexico	Isle Royale	2
+Woodland	Isle Royale	3
+Detroit Catholic Central B	Isle Royale	4
+Lincoln-Way East	Isle Royale	5
+John Adams B	Isle Royale	6
+Belmont	Joshua Tree	1
+Hoover A	Joshua Tree	2
+Canyon Crest	Joshua Tree	3
+Carl Sandburg	Joshua Tree	4
+Lake Highland	Joshua Tree	5
+Maggie Walker C	Joshua Tree	6
+Barrington A	Kings Canyon	1
+Chattahoochee A	Kings Canyon	2
+Dunbar	Kings Canyon	3
+Winston Churchill B	Kings Canyon	4
+West Point	Kings Canyon	5
+Cincinnati Hills Christian	Kings Canyon	6
+St. Mark's	Lake Clark	1
+Detroit Catholic Central A	Lake Clark	2
+Innovation Academy A	Lake Clark	3
+Walter Payton	Lake Clark	4
+Belvidere	Lake Clark	5
+Northmont B	Lake Clark	6
