@@ -74,13 +74,13 @@ def get_teams(games, roundstart, roundend):
             teams[game.team1].losses += 1
     return dict(sorted(teams.items()))
 
-def get_pools(tournament, prefix, teams):
+def get_pools(tournament, phase, teams):
     pools = []
-    with open(f'data/{tournament}/setup/{prefix}pools.txt', 'r') as file:
+    with open(f'data/{tournament}/setup/{phase}pools.txt', 'r') as file:
         poolnames = file.read().splitlines()
         for p in poolnames:
             pools.append(pbds.Pool(p))
-    with open(f'data/{tournament}/setup/{prefix}assignments.txt', 'r') as file:
+    with open(f'data/{tournament}/setup/{phase}assignments.txt', 'r') as file:
         assignments = file.read().splitlines()
         for a in assignments:
             team, pool = a.split('\t')[0], a.split('\t')[1]
