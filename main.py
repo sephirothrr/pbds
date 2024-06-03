@@ -1,13 +1,21 @@
 import json
 import os
 import pbds
+import requests
 
 from flask import Flask
 from flask import render_template
 
+from urllib.parse import urlparse
+from urllib.parse import urljoin
+from bs4 import BeautifulSoup
+
 app = Flask(__name__)
 
 tournament = 'nsc2023'
+url = 'https://hdwhite.org/qb/pacensc2023/qbj/'
+start_round = 1
+end_round = 5
 
 teams = {}
 pools = []
@@ -87,10 +95,84 @@ def get_pools(tournament, phase, teams):
             pools[poolnames.index(pool)].teams.append(teams[team])
     return pools
 
+def get_filenames_from_url():
+    # Send a GET request to the URL
+    response = requests.get(url)
+    response.raise_for_status()  # Check if the request was successful
+
+    # Parse the HTML content
+    soup = BeautifulSoup(response.text, 'html.parser')
+
+    # Find all the links in the HTML
+    links = soup.find_all('a')
+
+    filenames = []
+    for link in links:
+        href = link.get('href')
+        if href:
+            # Construct the full URL
+            full_url = urljoin(url, href)
+            # Extract the file name from the URL
+            filename = full_url.split('/')[-1]
+            # Filter out any irrelevant links (e.g., directories or navigation links)
+            if '.' in filename:
+                filenames.append(filename)
+    
+    return filenames
+
+def files_not_in_location(file_list, directory):
+
+    if not os.path.exists(directory):
+        # Create the directory and all intermediate directories
+        os.makedirs(directory)
+
+    # Get the set of files already in the directory
+    existing_files = set(os.listdir(directory))
+    
+    # Find files in file_list that are not in the existing_files
+    missing_files = [file for file in file_list if file not in existing_files]
+
+    ret_files = []
+    for file in missing_files:
+        rn = int(file.split('_')[0])
+        
+        if start_round <= rn <= end_round:
+            ret_files.append(file)
+    
+    return ret_files
+
+
+def download_file_from_url(filename, download_location):
+    # Ensure the download location exists
+    os.makedirs(download_location, exist_ok=True)
+
+    # Construct the full URL
+    full_url = urljoin(url, filename)
+
+    # Define the local path where the file will be saved
+    local_path = os.path.join(download_location, filename)
+
+    # Send a GET request to the URL
+    with requests.get(full_url, stream=True) as response:
+        response.raise_for_status()  # Check if the request was successful
+        # Open a local file with the same name as the downloaded file
+        with open(local_path, 'wb') as file:
+            # Write the content of the response to the local file
+            for chunk in response.iter_content(chunk_size=8192):
+                file.write(chunk)
+
+def downloads(filenames, download_location):
+    for file in filenames:
+        download_file_from_url(file, download_location)
 
 @app.route('/')
 def index():
     phase = "prelim"
+
+    filenames = get_filenames_from_url()
+    filenames = files_not_in_location(filenames, f'data/{tournament}/games')
+    downloads(filenames, f'data/{tournament}/games')
+    
     games = get_games(tournament)
     teams = get_teams(games, 1, 5)
     pools = get_pools(tournament, phase, teams)
