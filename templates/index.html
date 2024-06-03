@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <title>(P)BDS</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+  </head>
+  <h2>Bracket Standings</h2>
+  <body>
+    <div id="standings">
+        <div class="flexy">
+        {% for pool in pools %}
+          <div class="tableblock">
+              <h3>{{ pool.name }}</h3>
+              <table>
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>Team</th>
+                        <th>Record</th>
+                    </tr>
+                </thead>
+                  {% for team in pool.teams %}
+                    <tr bgcolor={{team.color}}>
+                      <td>{{ team.position }}</td>
+                      <td>{{ team.name }}</td>
+                      <td>{{ team.wins }} - {{team.losses}}</td>
+                    </tr>
+                  {% endfor %}
+              </table>
+            </div>
+        {% endfor %}
+            </div>
+    </div>
+  </body>

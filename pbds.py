@@ -14,6 +14,7 @@ class Status(Enum):
     FOUR_ACROSS_TWO = "{}, {}, {}, and {} are tied for {} place at {}-{} and will need to play a one-stage tiebreaker."
     FOUR_ACROSS_THREE = "{}, {}, {}, and {} are tied for {} place at {}-{} and will need to play a two-stage tiebreaker."
     COMPLETE = "{} is free to go, in {} place at {}-{}."
+    TIED_COMPLETE = "{} is free to go, tied for {} place at {}-{}."
     ERROR = "Something went wrong with {1}:{0}'s status."
 
 
@@ -30,6 +31,7 @@ class Team:
         self.bpoints = 0
         self.position = -1
         self.status = Status.UNCHECKED
+        self.color = "white"
 
 
 class Game:
@@ -76,7 +78,7 @@ class Pool:
                         if not rank % 2:
                             block_status = Status.TWO_WAY_TIEBREAK
                         else:
-                            block_status = Status.COMPLETE
+                            block_status = Status.TIED_COMPLETE
                     case 3:
                         block_status = Status.THREE_WAY_TIEBREAK
                     case 4:
@@ -94,11 +96,21 @@ class Pool:
             if block_status in (Status.UNCHECKED, Status.ERROR):
                 for team in brk:
                     status.append(block_status.value.format(team.name, ordinal(rank)))
-            elif block_status in (Status.PENDING, Status.COMPLETE):
+            elif block_status in (Status.PENDING, Status.COMPLETE, Status.TIED_COMPLETE):
                 for team in brk:
                     status.append(block_status.value.format(team.name, ordinal(rank), records[i][0], records[i][1]))
             else:
                 status.append(block_status.value.format(*[t.name for t in brk], ordinal(rank), records[i][0], records[i][1]))
+
+            if block_status in [Status.COMPLETE, Status.TIED_COMPLETE]:
+                for team in brk:
+                    team.color = "lightgreen"
+            elif block_status in [Status.PENDING]:
+                for team in brk:
+                    team.color = "yellow"
+            elif block_status in [Status.TWO_WAY_TIEBREAK, Status.THREE_WAY_TIEBREAK, Status.FOUR_ACROSS_TWO, Status.FOUR_ACROSS_THREE]:
+                for team in brk:
+                    team.color = "lightcoral"
 
             rank += len(brk)
 

@@ -2,6 +2,11 @@ import json
 import os
 import pbds
 
+from flask import Flask
+from flask import render_template
+
+app = Flask(__name__)
+
 tournament = 'nsc2023'
 
 teams = {}
@@ -68,13 +73,14 @@ def get_teams(games, roundstart, roundend):
             teams[game.team1].losses += 1
     return dict(sorted(teams.items()))
 
+
 def get_pools(tournament, phase, teams):
     pools = []
-    with open(f'data/{tournament}/setup/{phase}pools.txt', 'r') as file:
+    with open(f'data/{tournament}/phases/{phase}/pools.txt', 'r') as file:
         poolnames = file.read().splitlines()
         for p in poolnames:
             pools.append(pbds.Pool(p))
-    with open(f'data/{tournament}/setup/{phase}assignments.txt', 'r') as file:
+    with open(f'data/{tournament}/phases/{phase}/assignments.txt', 'r') as file:
         assignments = file.read().splitlines()
         for a in assignments:
             team, pool = a.split('\t')[0], a.split('\t')[1]
@@ -82,18 +88,23 @@ def get_pools(tournament, phase, teams):
     return pools
 
 
-if __name__ == '__main__':
+@app.route('/')
+def index():
+    phase = "prelim"
     games = get_games(tournament)
     teams = get_teams(games, 1, 5)
-    pools = get_pools(tournament, "prelim", teams)
+    pools = get_pools(tournament, phase, teams)
     output = ""
     for pool in pools:
         if len(pool.teams):
-           output += f"{pool.name}\n"
-           for status in pool.findStatus:
-               output += status
-               output += "\n"
+            output += f"{pool.name}\n"
+            for status in pool.findStatus:
+                output += status
+                output += "\n"
+        else:
+            pools.remove(pool)
         output += "\n"
     print("Done!")
-    with open(f'data/{tournament}/output.txt', 'w') as file:
+    with open(f'data/{tournament}/phases/{phase}/output.txt', 'w+') as file:
         file.write(output)
+    return render_template('index.html', pools=pools)
