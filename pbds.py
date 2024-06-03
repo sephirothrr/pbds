@@ -73,7 +73,7 @@ class Pool:
                     case 1:
                         block_status = Status.COMPLETE
                     case 2:
-                        if rank % 2:
+                        if not rank % 2:
                             block_status = Status.TWO_WAY_TIEBREAK
                         else:
                             block_status = Status.COMPLETE
