@@ -1,17 +1,12 @@
 import json
 import os
 import pbds
+import downloader
 
 from flask import Flask
 from flask import render_template
 
 app = Flask(__name__)
-
-tournament = 'nsc2023'
-
-teams = {}
-pools = []
-games = []
 
 
 def get_games(tournament):
@@ -91,6 +86,15 @@ def get_pools(tournament, phase, teams):
 @app.route('/')
 def index():
     phase = "prelim"
+
+    tournament = 'nsc2023'
+
+    loader = downloader.Downloader(url='https://hdwhite.org/qb/pacensc2023/qbj/', start_round=1, end_round=5)
+
+    filenames = loader.get_filenames_from_url()
+    filenames = loader.files_not_updated(filenames, f'data/{tournament}/games')
+    loader.downloads(filenames, f'data/{tournament}/games')
+
     games = get_games(tournament)
     teams = get_teams(games, 1, 5)
     pools = get_pools(tournament, phase, teams)
