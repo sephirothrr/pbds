@@ -36,6 +36,7 @@
                         <th>Position</th>
                         <th>Team</th>
                         <th>Record</th>
+                        <th>Protests</th>
                     </tr>
                 </thead>
                   {% for team in pool.teams %}
@@ -43,6 +44,7 @@
                       <td>{{ team.position }}</td>
                       <td>{{ team.name }}</td>
                       <td>{{ team.wins }} - {{team.losses}}</td>
+                    <td bgcolor={{ "red" if team.protest else "white" }}>{{ team.protest }}</td>
                     </tr>
                   {% endfor %}
               </table>

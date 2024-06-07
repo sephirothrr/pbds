@@ -1,5 +1,6 @@
 from enum import Enum
 from itertools import groupby
+import protests
 
 
 def ordinal(n):
@@ -32,6 +33,7 @@ class Team:
         self.position = -1
         self.status = Status.UNCHECKED
         self.color = "white"
+        self.protest = False
 
 
 class Game:
