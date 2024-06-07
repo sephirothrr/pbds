@@ -12,11 +12,15 @@ class FileData():
         self.filename = filename
         self.timestamp = timestamp
 
+    def __eq__(self, other):
+        return self.filename == other.filename and self.timestamp == other.timestamp
+
 class Downloader():
     def __init__(self, url='https://hdwhite.org/qb/pacensc2023/qbj/', start_round=1, end_round=5):
         self.url = url
         self.start_round = start_round
         self.end_round = end_round
+
 
     def get_filenames_from_url(self):
         print(f"Parsing files from {self.url}")

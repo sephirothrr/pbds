@@ -2,10 +2,14 @@ import json
 import os
 import pbds
 import downloader
+from slack_sdk import WebClient
 
-from flask import Flask
+from flask import Flask, send_from_directory
+# from flask_session import session
 from flask import render_template
 
+
+pools = []
 app = Flask(__name__)
 
 
@@ -83,21 +87,46 @@ def get_pools(tournament, phase, teams):
     return pools
 
 
-@app.route('/')
-def index():
-    phase = "prelim"
+class Phase:
+    def __init__(self, name: str):
+        self.name = name
+        self.carry = False
+        self.start = 1
+        self.end = 15
+        if name == "prelim":
+            self.start = 1
+            self.end = 5
+        elif name == "playoffs":
+            self.start = 6
+            self.end = 10
+        elif name == "super":
+            self.start = 11
+            self.end = 15
+            self.carry = True
+
+
+@app.post('/')
+
+@app.route('/<phase>')
+def index(phase):
+    global pools
+
+    phase = Phase(phase)
+
 
     tournament = 'nsc2023'
 
-    loader = downloader.Downloader(url='https://hdwhite.org/qb/pacensc2023/qbj/', start_round=1, end_round=5)
+    statsurl = 'https://hdwhite.org/qb/tournaments/pacensc2024/qbj/'
+
+    loader = downloader.Downloader(start_round=phase.start, end_round=phase.end)
 
     filenames = loader.get_filenames_from_url()
     filenames = loader.files_not_updated(filenames, f'data/{tournament}/games')
     loader.downloads(filenames, f'data/{tournament}/games')
 
     games = get_games(tournament)
-    teams = get_teams(games, 1, 5)
-    pools = get_pools(tournament, phase, teams)
+    teams = get_teams(games, phase.start, phase.end)
+    pools = get_pools(tournament, phase.name, teams)
     output = ""
     for pool in pools:
         if len(pool.teams):
@@ -109,6 +138,13 @@ def index():
             pools.remove(pool)
         output += "\n"
     print("Done!")
-    with open(f'data/{tournament}/phases/{phase}/output.txt', 'w+') as file:
+    with open(f'data/{tournament}/phases/{phase.name}/output.txt', 'w+') as file:
         file.write(output)
-    return render_template('index.html', pools=pools)
+    for pool in pools:
+        with open(f'static/generated/{pool.name}.html', 'w+') as file:
+            file.write(render_template('pool.html', pool=pool))
+    return render_template('index.html', pools=pools, phase=phase)
+
+@app.route('/bracket/<pool>')
+def pool(pool):
+    return send_from_directory('static/generated', f'{pool}.html')

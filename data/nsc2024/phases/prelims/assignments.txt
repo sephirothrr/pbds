@@ -1,0 +1,72 @@
+Richard Montgomery A	Anacostia
+Detroit Catholic Central A	Anacostia
+Maggie Walker A	Anacostia
+Lindbergh	Anacostia
+St. Xavier	Anacostia
+Seven Lakes	Anacostia
+Thomas Jefferson A	Bloomingdale
+Strake Jesuit	Bloomingdale
+McLean A	Bloomingdale
+West Point	Bloomingdale
+Carl Sandburg	Bloomingdale
+Elkhorn North	Bloomingdale
+Innovation Academy A	Columbia Heights
+Thomas Jefferson B	Columbia Heights
+Solon	Columbia Heights
+Livingston B	Columbia Heights
+Stevenson B	Columbia Heights
+Freeman	Columbia Heights
+William Fremd	Dupont Circle
+Winston Churchill A	Dupont Circle
+Choate Rosemary Hall	Dupont Circle
+Johns Creek B	Dupont Circle
+St. Thomas	Dupont Circle
+Hunter B	Dupont Circle
+St. Mark's	Eckington
+Lambert	Eckington
+Bloomington	Eckington
+Northmont B	Eckington
+Okemos	Eckington
+Maggie Walker B	Eckington
+Belmont	Foggy Bottom
+Heights	Foggy Bottom
+Stevenson A	Foggy Bottom
+Lightridge	Foggy Bottom
+Carbondale	Foggy Bottom
+Detroit Catholic Central C	Foggy Bottom
+Kinkaid	Georgetown
+Fairfield County AT	Georgetown
+Chattahoochee	Georgetown
+Cincinnati Hills	Georgetown
+McLean B	Georgetown
+Thomas Jefferson D	Georgetown
+Hunter A	Hillcrest
+Mexico	Hillcrest
+Downingtown STEM	Hillcrest
+Georgetown Day	Hillcrest
+Walter Payton B	Hillcrest
+Hoover B	Hillcrest
+Johns Creek A	Judiciary Square
+Alabama Cyber Tech	Judiciary Square
+University Lab	Judiciary Square
+Richard Montgomery B	Judiciary Square
+Detroit Catholic Central B	Judiciary Square
+Maggie Walker C	Judiciary Square
+Livingston A	Kalorama
+Northmont A	Kalorama
+Great Valley	Kalorama
+James W. Robinson	Kalorama
+DuPage County AT	Kalorama
+Norfolk Academic Guild	Kalorama
+Barrington	Logan Circle
+Beavercreek	Logan Circle
+Hoover A	Logan Circle
+Innovation Academy B	Logan Circle
+Winston Churchill B	Logan Circle
+Saint Joseph	Logan Circle
+Hastings	Mount Pleasant
+Canyon Crest	Mount Pleasant
+Owensboro	Mount Pleasant
+Walter Payton A	Mount Pleasant
+Durham AT	Mount Pleasant
+Thomas Jefferson C	Mount Pleasant
