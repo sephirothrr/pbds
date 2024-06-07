@@ -105,7 +105,9 @@ class Phase:
             self.carry = True
 
 
-@app.post('/')
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory('static', 'images/slack.svg', mimetype='image')
 
 @app.route('/<phase>')
 def index(phase):
