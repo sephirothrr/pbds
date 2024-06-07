@@ -13,7 +13,7 @@ class ProtestStatus(enum.Enum):
 def read_google_sheet():
     spreadsheet_id = '1EniThOdVjqbONztWdg1f0CwaAHsZNsLVyyDf1gSJf38'
     sheet_name = 'Form Responses 1'
-    credentials_json_path = 'creds.json'
+    credentials_json_path = 'google-credentials.json'
 
     # Define the scope
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
