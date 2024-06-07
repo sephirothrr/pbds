@@ -2,16 +2,18 @@ import json
 import os
 import pbds
 import downloader
-from slack_sdk import WebClient
+import slack
+import pathlib
+import my_secrets
+from base64 import b64encode as b64e
 
-from flask import Flask, send_from_directory
-# from flask_session import session
+from flask import Flask, send_from_directory, redirect, url_for, request
 from flask import render_template
-
 
 pools = []
 app = Flask(__name__)
 app.config['DEBUG'] = True
+domain = 'https://pbds-39c532296638.herokuapp.com/'
 
 
 def get_games(tournament):
@@ -110,14 +112,14 @@ class Phase:
 def favicon():
     return send_from_directory('static', 'images/slack.svg', mimetype='image')
 
-@app.route('/<phase>')
-def index(phase):
+
+@app.route('/<tournament>/<phase>')
+def index(tournament, phase):
     global pools
 
     phase = Phase(phase)
 
-
-    tournament = 'nsc2023'
+    # tournament = 'nsc2023'
 
     statsurl = 'https://hdwhite.org/qb/tournaments/pacensc2024/qbj/'
 
@@ -144,10 +146,39 @@ def index(phase):
     with open(f'data/{tournament}/phases/{phase.name}/output.txt', 'w+') as file:
         file.write(output)
     for pool in pools:
-        with open(f'static/generated/{pool.name}.html', 'w+') as file:
+        pathlib.Path(f'static/generated/{tournament}/{phase.name}').mkdir(parents=True, exist_ok=True)
+        with open(f'static/generated/{tournament}/{phase.name}/{pool.name}.html', 'w+') as file:
             file.write(render_template('pool.html', pool=pool))
-    return render_template('index.html', pools=pools, phase=phase)
+    return render_template('index.html', pools=pools, phase=phase, encoder=b64e)
 
-@app.route('/bracket/<pool>')
-def pool(pool):
-    return send_from_directory('static/generated', f'{pool}.html')
+
+@app.route('/<tournament>/<phase>/<bracket>')
+def pool(tournament, phase, bracket):
+    return send_from_directory(f'static/generated/{tournament}/{phase}', f'{bracket}.html')
+
+
+@app.route('/initialize/<tournament>/<phase>')
+def initialize(tournament, phase):
+    pools = []
+    with open(f'data/{tournament}/phases/{phase}/pools.txt', 'r') as file:
+        poolnames = file.read().splitlines()
+        for p in poolnames:
+            pools.append(pbds.Pool(p))
+    # slack.sendBrackets([pool.name for pool in pools])
+    slackclient = slack.SlackClient('record-confirmation', my_secrets.token)
+    slackclient.sendBrackets(["test", "test2"])
+    for pool in pools:
+        url = url_for('pool', tournament=tournament, phase=phase, bracket=pool.name)
+        print(url)
+    #     slack.sendRecordConfirmation(pool.name, f"Please confirm your bracket's records at {url}")
+    return redirect(f'/{tournament}/{phase}')
+
+
+@app.route('/slackify', methods=['POST'])
+def slackify():
+    jsonData = request.get_json()
+    print(jsonData)
+    print(jsonData["bracket"])
+    slackclient = slack.SlackClient("record-confirmation", my_secrets.token)
+    slackclient.sendRecordConfirmation(jsonData["bracket"], jsonData["message"])
+    return
