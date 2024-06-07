@@ -2,10 +2,14 @@ import json
 import os
 import pbds
 import downloader
+from slack_sdk import WebClient
 
-from flask import Flask
+from flask import Flask, send_from_directory
+# from flask_session import session
 from flask import render_template
 
+
+pools = []
 app = Flask(__name__)
 
 
@@ -82,6 +86,7 @@ def get_pools(tournament, phase, teams):
             pools[poolnames.index(pool)].teams.append(teams[team])
     return pools
 
+
 class Phase:
     def __init__(self, name: str):
         self.name = name
@@ -100,9 +105,11 @@ class Phase:
             self.carry = True
 
 
+@app.post('/')
 
 @app.route('/<phase>')
 def index(phase):
+    global pools
 
     phase = Phase(phase)
 
@@ -133,4 +140,11 @@ def index(phase):
     print("Done!")
     with open(f'data/{tournament}/phases/{phase.name}/output.txt', 'w+') as file:
         file.write(output)
+    for pool in pools:
+        with open(f'static/generated/{pool.name}.html', 'w+') as file:
+            file.write(render_template('pool.html', pool=pool))
     return render_template('index.html', pools=pools, phase=phase)
+
+@app.route('/bracket/<pool>')
+def pool(pool):
+    return send_from_directory('static/generated', f'{pool}.html')
