@@ -5,6 +5,7 @@ import downloader
 import slack
 import pathlib
 from base64 import b64encode as b64e
+import protests
 
 from flask import Flask, send_from_directory, redirect, url_for, request
 from flask import render_template
@@ -129,6 +130,7 @@ def index(tournament, phase):
     global pools
 
     phase = Phase(phase)
+    all_protests = protests.read_google_sheet()
 
     # tournament = 'nsc2023'
 
@@ -156,6 +158,9 @@ def index(tournament, phase):
             pools.remove(pool)
         output += "\n"
     print("Done!")
+    for protest in all_protests:
+        teams[protest['team1']].protest = True
+        teams[protest['team2']].protest = True
     with open(f'data/{tournament}/phases/{phase.name}/output.txt', 'w+') as file:
         file.write(output)
     for pool in pools:
