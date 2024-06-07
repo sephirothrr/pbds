@@ -50,9 +50,16 @@ def get_games(tournament):
                 games.append(pbds.Game(rnd, tuh, team1, team1tuscore, team1bscore, team2, team2tuscore, team2bscore))
     return games
 
-
-def get_teams(games, roundstart, roundend):
+def generate_teams(tournament, phase):
     teams = {}
+    with open(f'data/{tournament}/phases/{phase}/assignments.txt', 'r') as file:
+        assignments = file.read().splitlines()
+        for a in assignments:
+            team = a.split('\t')[0]
+            teams[team] = pbds.Team(team)
+    return teams
+
+def get_teams(games, roundstart, roundend, teams={}):
     for game in games:
         if game.round < roundstart or game.round > roundend:
             continue
@@ -79,12 +86,15 @@ def get_teams(games, roundstart, roundend):
 
 def get_pools(tournament, phase, teams):
     pools = []
+    poolnames = []
     with open(f'data/{tournament}/phases/{phase}/pools.txt', 'r') as file:
         poolnames = file.read().splitlines()
+        print(poolnames)
         for p in poolnames:
             pools.append(pbds.Pool(p))
     with open(f'data/{tournament}/phases/{phase}/assignments.txt', 'r') as file:
         assignments = file.read().splitlines()
+        print(poolnames)
         for a in assignments:
             team, pool = a.split('\t')[0], a.split('\t')[1]
             pools[poolnames.index(pool)].teams.append(teams[team])
@@ -97,7 +107,7 @@ class Phase:
         self.carry = False
         self.start = 1
         self.end = 15
-        if name == "prelim":
+        if name == "prelims":
             self.start = 1
             self.end = 5
         elif name == "playoffs":
@@ -131,7 +141,9 @@ def index(tournament, phase):
     loader.downloads(filenames, f'data/{tournament}/games')
 
     games = get_games(tournament)
-    teams = get_teams(games, phase.start, phase.end)
+
+    teams = generate_teams(tournament, phase.name)
+    teams = get_teams(games, phase.start, phase.end, teams)
     pools = get_pools(tournament, phase.name, teams)
     output = ""
     for pool in pools:
@@ -170,7 +182,7 @@ def initialize(tournament, phase):
     slackclient = slack.SlackClient('record-confirmation', slack.getToken())
 
     for pool in pools:
-        url = url_for('pool', tournament=tournament, phase=phase, bracket=pool.name)
+        url = url_for('pool', tournament=tournament, phase=phase, bracket=pool.name, _external=True)
         print(url)
         slackclient.sendBrackets([pool.name])
         slackclient.sendRecordConfirmation(pool.name, f"Please confirm your bracket's records at {url}")
