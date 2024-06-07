@@ -6,7 +6,6 @@ import os
 import datetime
 import time
 
-
 class FileData():
     def __init__(self, filename, timestamp):
         self.filename = filename
