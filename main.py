@@ -9,6 +9,8 @@ from base64 import b64encode as b64e
 from flask import Flask, send_from_directory, redirect, url_for, request
 from flask import render_template
 
+urls = {"nsc2023": "https://hdwhite.org/qb/pacensc2023/qbj/", "nsc2024": "https://hdwhite.org/qb/tournaments/pacensc2024/qbj/"}
+
 pools = []
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -122,7 +124,7 @@ def index(tournament, phase):
 
     statsurl = 'https://hdwhite.org/qb/tournaments/pacensc2024/qbj/'
 
-    loader = downloader.Downloader(start_round=phase.start, end_round=phase.end)
+    loader = downloader.Downloader(urls[tournament], start_round=phase.start, end_round=phase.end)
 
     filenames = loader.get_filenames_from_url()
     filenames = loader.files_not_updated(filenames, f'data/{tournament}/games')
@@ -163,13 +165,17 @@ def initialize(tournament, phase):
         poolnames = file.read().splitlines()
         for p in poolnames:
             pools.append(pbds.Pool(p))
-    # slack.sendBrackets([pool.name for pool in pools])
+    debug = os.getenv('DEBUG') == "True"
+
     slackclient = slack.SlackClient('record-confirmation', slack.getToken())
-    slackclient.sendBrackets(["test", "test2"])
+
     for pool in pools:
         url = url_for('pool', tournament=tournament, phase=phase, bracket=pool.name)
         print(url)
-    #     slack.sendRecordConfirmation(pool.name, f"Please confirm your bracket's records at {url}")
+        slackclient.sendBrackets([pool.name])
+        slackclient.sendRecordConfirmation(pool.name, f"Please confirm your bracket's records at {url}")
+        if debug:
+            break
     return redirect(f'/{tournament}/{phase}')
 
 
