@@ -11,6 +11,7 @@ from flask import render_template
 
 pools = []
 app = Flask(__name__)
+app.config['DEBUG'] = True
 
 
 def get_games(tournament):
