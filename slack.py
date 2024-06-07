@@ -1,4 +1,4 @@
-import my_secrets
+# import my_secrets
 import os
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
@@ -8,7 +8,7 @@ from slack_sdk.errors import SlackApiError
 domain = 'https://pbds-39c532296638.herokuapp.com/'
 
 def getToken():
-    return os.getenv('SLACK_TOKEN', my_secrets.token)
+    return os.getenv('SLACK_TOKEN')
 
 class SlackClient:
     def __init__(self, channel, token):

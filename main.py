@@ -4,7 +4,6 @@ import pbds
 import downloader
 import slack
 import pathlib
-import my_secrets
 from base64 import b64encode as b64e
 
 from flask import Flask, send_from_directory, redirect, url_for, request
@@ -165,7 +164,7 @@ def initialize(tournament, phase):
         for p in poolnames:
             pools.append(pbds.Pool(p))
     # slack.sendBrackets([pool.name for pool in pools])
-    slackclient = slack.SlackClient('record-confirmation', my_secrets.token)
+    slackclient = slack.SlackClient('record-confirmation', slack.getToken())
     slackclient.sendBrackets(["test", "test2"])
     for pool in pools:
         url = url_for('pool', tournament=tournament, phase=phase, bracket=pool.name)
@@ -179,6 +178,6 @@ def slackify():
     jsonData = request.get_json()
     print(jsonData)
     print(jsonData["bracket"])
-    slackclient = slack.SlackClient("record-confirmation", my_secrets.token)
+    slackclient = slack.SlackClient("record-confirmation", slack.getToken())
     slackclient.sendRecordConfirmation(jsonData["bracket"], jsonData["message"])
     return
