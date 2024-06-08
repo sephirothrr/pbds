@@ -22,8 +22,9 @@ class Status(Enum):
 # TODO: get real data model from qbj files once they are available
 
 class Team:
-    def __init__(self, name: str):
+    def __init__(self, name: str, bracket: str):
         self.name = name
+        self.bracket = bracket
         self.games = 0
         self.wins = 0
         self.losses = 0
