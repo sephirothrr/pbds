@@ -50,9 +50,9 @@ def read_google_sheet():
         result = ''
 
         if len(values_range[row]) == 19:
-            result = ProtestStatus.PENDING
+            result = ProtestStatus.PENDING.value
         else:
-            result = ProtestStatus(values_range[row][19]).name
+            result = ProtestStatus(values_range[row][19]).value
         protest = {
             'team1': values_range[row][4],
             'team2': values_range[row][5],
