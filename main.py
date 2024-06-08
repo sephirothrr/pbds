@@ -170,10 +170,11 @@ def index(tournament, phase):
     print("Done!")
     for protest in all_protests:
         print(protest['result'])
-        if protest['result'] != "MOOT" and protest['result'] != "RESOLVED":
-            print(f'Recording live protest between {protest["team1"]} and {protest["team2"]}')
-            teams[protest['team1']].protest = True
-            teams[protest['team2']].protest = True
+        if protest['round'] in range(phase.start, phase.end + 1):
+            if protest['result'] != "MOOT" and protest['result'] != "RESOLVED":
+                print(f'Recording live protest between {protest["team1"]} and {protest["team2"]}')
+                teams[protest['team1']].protest = True
+                teams[protest['team2']].protest = True
     with open(f'data/{tournament}/phases/{phase.name}/output.txt', 'w+') as file:
         file.write(output)
     for pool in pools:
