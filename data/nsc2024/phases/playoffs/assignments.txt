@@ -1,0 +1,72 @@
+Johns Creek A	Bethesda
+Barrington	Bethesda
+Richard Montgomery A	Arlington
+Hunter A	Chevy Chase
+Thomas Jefferson A	Bethesda
+Belmont	Chevy Chase
+Kinkaid	Arlington
+Thomas Jefferson B	Falls Church
+St. Mark's	Arlington
+Winston Churchill A	Arlington
+Innovation Academy A	Bethesda
+Hastings	Chevy Chase
+William Fremd	Easton
+Hoover A	Chevy Chase
+Livingston A	Damascus
+Johns Creek B	Damascus
+University Lab	Damascus
+Heights	Damascus
+Strake Jesuit	Chevy Chase
+Maggie Walker A	Chevy Chase
+Detroit Catholic Central A	Gaithersburg
+Lambert	Damascus
+Bloomington	Mount Vernon
+Northmont A	Arlington
+Walter Payton A	Falls Church
+Thomas Jefferson D	Bethesda
+Canyon Crest	Bethesda
+Owensboro	Kensington
+Lightridge	Herndon
+Beavercreek	Falls Church
+Georgetown Day	Arlington
+Thomas Jefferson C	Gaithersburg
+Richard Montgomery B	Herndon
+McLean B	Easton
+Livingston B	Damascus
+Great Valley	Herndon
+Seven Lakes	Easton
+Carbondale	Laurel
+Alabama Cyber Tech	Falls Church
+Lindbergh	Jessup
+Mexico	Gaithersburg
+McLean A	Gaithersburg
+Downingtown STEM	Easton
+Northmont B	Herndon
+Chattahoochee	Falls Church
+Stevenson A	Mount Vernon
+Innovation Academy B	Kensington
+Detroit Catholic Central B	Kensington
+Walter Payton B	Jessup
+DuPage County AT	Easton
+Okemos	Easton
+Winston Churchill B	Gaithersburg
+Hunter B	Herndon
+West Point	Falls Church
+St. Xavier	Laurel
+Detroit Catholic Central C	Gaithersburg
+James W. Robinson	Mount Vernon
+Solon	Herndon
+Fairfield County AT	Jessup
+St. Thomas	Jessup
+Hoover B	Laurel
+Maggie Walker B	Jessup
+Durham AT	Laurel
+Carl Sandburg	Laurel
+Freeman	Kensington
+Maggie Walker C	Mount Vernon
+Cincinnati Hills	Kensington
+Norfolk Academic Guild	Jessup
+Stevenson B	Mount Vernon
+Elkhorn North	Kensington
+Choate Rosemary Hall	Mount Vernon
+Saint Joseph	Laurel
