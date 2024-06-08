@@ -85,7 +85,8 @@ def get_teams(games, roundstart, roundend, teams={}):
     for game in games:
         if game.round < roundstart or game.round > roundend:
             continue
-        teams = process_game(game, teams)
+        if game.tuh >= 20:
+            teams = process_game(game, teams)
     return dict(sorted(teams.items()))
 
 
