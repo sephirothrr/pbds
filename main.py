@@ -121,7 +121,7 @@ class Phase:
         elif name == "playoffs":
             self.start = 6
             self.end = 10
-        elif name == "super":
+        elif name == "superplayoffs":
             self.start = 11
             self.end = 16
             self.carry = [6, 7, 8, 9, 10]
