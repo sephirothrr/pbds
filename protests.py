@@ -13,7 +13,7 @@ class ProtestStatus(enum.Enum):
 def read_google_sheet():
     spreadsheet_id = '1EniThOdVjqbONztWdg1f0CwaAHsZNsLVyyDf1gSJf38'
     sheet_name = 'Form Responses 1'
-    credentials_json_path = 'google-credentials.json'
+    credentials_json_path = 'creds.json'
 
     # Define the scope
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
@@ -49,21 +49,23 @@ def read_google_sheet():
 
         result = ''
 
-        if values_range[row][19] == '':
-            result = ProtestStatus.PENDING
+        if len(values_range[row]) == 19:
+            result = ProtestStatus.PENDING.value
         else:
-            result = ProtestStatus(values_range[row][19]).name
-            protest = {
+            result = ProtestStatus(values_range[row][19]).value
+
+            print(result)
+        protest = {
                 'team1': values_range[row][4],
                 'team2': values_range[row][5],
                 'result': result
-            }
+        }
 
-            protests.append(protest)
+        protests.append(protest)
 
     return protests
 
 
 # Example usage
-# data = read_google_sheet()
-# print(data)
+data = read_google_sheet()
+print(data)
