@@ -1,5 +1,7 @@
 import json
 import os
+import time
+
 import pbds
 import downloader
 import slack
@@ -95,12 +97,12 @@ def get_pools(tournament, phase, teams):
     poolnames = []
     with open(f'data/{tournament}/phases/{phase}/pools.txt', 'r') as file:
         poolnames = file.read().splitlines()
-        print(poolnames)
+        # print(poolnames)
         for p in poolnames:
             pools.append(pbds.Pool(p))
     with open(f'data/{tournament}/phases/{phase}/assignments.txt', 'r') as file:
         assignments = file.read().splitlines()
-        print(poolnames)
+        # print(poolnames)
         for a in assignments:
             team, pool = a.split('\t')[0], a.split('\t')[1]
             pools[poolnames.index(pool)].teams.append(teams[team])
@@ -168,9 +170,12 @@ def index(tournament, phase):
                 teams = process_game(game, teams)
 
     print("Done!")
+    print(f'Recording protests in rounds {phase.start} to {phase.end}')
     for protest in all_protests:
-        print(protest['result'])
-        if protest['round'] in range(phase.start, phase.end + 1):
+        # print(protest['result'])
+        # print(f"Protest in round {protest['round']}")
+        if protest['round'] in [str(x) for x in range(phase.start, phase.end + 1)]:
+            print(f"Recording protest in round {protest['round']}")
             if protest['result'] != "MOOT" and protest['result'] != "RESOLVED":
                 print(f'Recording live protest between {protest["team1"]} and {protest["team2"]}')
                 teams[protest['team1']].protest = True
@@ -204,7 +209,9 @@ def initialize(tournament, phase):
         url = url_for('pool', tournament=tournament, phase=phase, bracket=pool.name, _external=True)
         print(url)
         slackclient.sendBrackets([pool.name])
+        time.sleep(1)
         slackclient.sendRecordConfirmation(pool.name, f"Please confirm your bracket's records and protest status at {url}")
+        time.sleep(1)
         if debug:
             break
     return redirect(f'/{tournament}/{phase}')
