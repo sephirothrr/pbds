@@ -8,6 +8,7 @@ class ProtestStatus(enum.Enum):
     ACCEPTED = "ACCEPTED"
     REJECTED = "REJECTED"
     MOOT = "MOOT"
+    RESOLVED = "RESOLVED"
 
 
 def read_google_sheet():
