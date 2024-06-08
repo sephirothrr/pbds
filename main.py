@@ -56,32 +56,36 @@ def generate_teams(tournament, phase):
     with open(f'data/{tournament}/phases/{phase}/assignments.txt', 'r') as file:
         assignments = file.read().splitlines()
         for a in assignments:
-            team = a.split('\t')[0]
-            teams[team] = pbds.Team(team)
+            team, bracket = a.split('\t')[0], a.split('\t')[1]
+            teams[team] = pbds.Team(team, bracket)
+    return teams
+
+def process_game(game, teams):
+    if game.team1 not in teams:
+        teams[game.team1] = pbds.Team(game.team1)
+    if game.team2 not in teams:
+        teams[game.team2] = pbds.Team(game.team2)
+    teams[game.team1].games += 1
+    teams[game.team2].games += 1
+    teams[game.team1].tuh += game.tuh
+    teams[game.team2].tuh += game.tuh
+    teams[game.team1].tupoints += game.team1tuscore
+    teams[game.team1].bpoints += game.team1bscore
+    teams[game.team2].tupoints += game.team2tuscore
+    teams[game.team2].bpoints += game.team2bscore
+    if game.team1score > game.team2score:
+        teams[game.team1].wins += 1
+        teams[game.team2].losses += 1
+    elif game.team1score < game.team2score:
+        teams[game.team2].wins += 1
+        teams[game.team1].losses += 1
     return teams
 
 def get_teams(games, roundstart, roundend, teams={}):
     for game in games:
         if game.round < roundstart or game.round > roundend:
             continue
-        if game.team1 not in teams:
-            teams[game.team1] = pbds.Team(game.team1)
-        if game.team2 not in teams:
-            teams[game.team2] = pbds.Team(game.team2)
-        teams[game.team1].games += 1
-        teams[game.team2].games += 1
-        teams[game.team1].tuh += game.tuh
-        teams[game.team2].tuh += game.tuh
-        teams[game.team1].tupoints += game.team1tuscore
-        teams[game.team1].bpoints += game.team1bscore
-        teams[game.team2].tupoints += game.team2tuscore
-        teams[game.team2].bpoints += game.team2bscore
-        if game.team1score > game.team2score:
-            teams[game.team1].wins += 1
-            teams[game.team2].losses += 1
-        elif game.team1score < game.team2score:
-            teams[game.team2].wins += 1
-            teams[game.team1].losses += 1
+        teams = process_game(game, teams)
     return dict(sorted(teams.items()))
 
 
@@ -105,7 +109,7 @@ def get_pools(tournament, phase, teams):
 class Phase:
     def __init__(self, name: str):
         self.name = name
-        self.carry = False
+        self.carry = []
         self.start = 1
         self.end = 15
         if name == "prelims":
@@ -116,8 +120,8 @@ class Phase:
             self.end = 10
         elif name == "super":
             self.start = 11
-            self.end = 15
-            self.carry = True
+            self.end = 16
+            self.carry = [6, 7, 8, 9, 10]
 
 
 @app.route('/favicon.ico')
@@ -157,10 +161,17 @@ def index(tournament, phase):
         else:
             pools.remove(pool)
         output += "\n"
+    if len(phase.carry):
+        for game in games:
+            if game.round in phase.carry and teams[game.team1].bracket == teams[game.team2].bracket:
+                teams = process_game(game, teams)
+
     print("Done!")
     for protest in all_protests:
-        teams[protest['team1']].protest = True
-        teams[protest['team2']].protest = True
+        print(protest['result'])
+        if protest['result'] != protests.ProtestStatus.MOOT:
+            teams[protest['team1']].protest = True
+            teams[protest['team2']].protest = True
     with open(f'data/{tournament}/phases/{phase.name}/output.txt', 'w+') as file:
         file.write(output)
     for pool in pools:
@@ -190,7 +201,7 @@ def initialize(tournament, phase):
         url = url_for('pool', tournament=tournament, phase=phase, bracket=pool.name, _external=True)
         print(url)
         slackclient.sendBrackets([pool.name])
-        slackclient.sendRecordConfirmation(pool.name, f"Please confirm your bracket's records at {url}")
+        slackclient.sendRecordConfirmation(pool.name, f"Please confirm your bracket's records and protest status at {url}")
         if debug:
             break
     return redirect(f'/{tournament}/{phase}')
