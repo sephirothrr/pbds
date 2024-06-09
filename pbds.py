@@ -71,26 +71,43 @@ class Pool:
         for i, brk in enumerate(breaks):
             block_status = Status.UNCHECKED
 
-            if brk[0].games != 5:
-                block_status = Status.PENDING
-            else:
-                match len(brk):
-                    case 1:
-                        block_status = Status.COMPLETE
-                    case 2:
-                        if not rank % 2:
+            if len(self.teams) == 6:
+                if brk[0].games != 5:
+                    block_status = Status.PENDING
+                else:
+                    match len(brk):
+                        case 1:
+                            block_status = Status.COMPLETE
+                        case 2:
+                            if not rank % 2:
+                                block_status = Status.TWO_WAY_TIEBREAK
+                            else:
+                                block_status = Status.TIED_COMPLETE
+                        case 3:
+                            block_status = Status.THREE_WAY_TIEBREAK
+                        case 4:
+                            if rank % 2:
+                                block_status = Status.FOUR_ACROSS_TWO
+                            else:
+                                block_status = Status.FOUR_ACROSS_THREE
+                        case _:
+                            block_status = Status.ERROR
+            elif len(self.teams) == 8:
+                if brk[0].games != 7:
+                    block_status = Status.PENDING
+                else:
+                    match len(brk):
+                        case 1:
+                            block_status = Status.COMPLETE
+                        case 2:
                             block_status = Status.TWO_WAY_TIEBREAK
-                        else:
-                            block_status = Status.TIED_COMPLETE
-                    case 3:
-                        block_status = Status.THREE_WAY_TIEBREAK
-                    case 4:
-                        if rank % 2:
+                        case 3:
+                            block_status = Status.THREE_WAY_TIEBREAK
+                        case 4:
                             block_status = Status.FOUR_ACROSS_TWO
-                        else:
-                            block_status = Status.FOUR_ACROSS_THREE
-                    case _:
-                        block_status = Status.ERROR
+                        case _:
+                            block_status = Status.ERROR
+
 
             for t in range(rank, rank + len(brk)):
                 self.teams[t - 1].status = block_status
