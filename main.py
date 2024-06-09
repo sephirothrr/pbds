@@ -189,6 +189,10 @@ def index(tournament, phase):
     teams = get_teams(games, phase.start, phase.end, teams)
     pools = get_pools(tournament, phase.name, teams)
     output = ""
+    if len(phase.carry):
+        for game in games:
+            if game.round in phase.carry and teams[game.team1].bracket == teams[game.team2].bracket:
+                teams = process_game(game, teams)
     for pool in pools:
         if len(pool.teams):
             output += f"{pool.name}\n"
@@ -198,10 +202,6 @@ def index(tournament, phase):
         else:
             pools.remove(pool)
         output += "\n"
-    if len(phase.carry):
-        for game in games:
-            if game.round in phase.carry and teams[game.team1].bracket == teams[game.team2].bracket:
-                teams = process_game(game, teams)
 
     print("Done!")
     # print(f'Recording protests in rounds {phase.start} to {phase.end}')
