@@ -12,12 +12,38 @@ import protests
 from flask import Flask, send_from_directory, redirect, url_for, request
 from flask import render_template
 
-urls = {"nsc2023": "https://hdwhite.org/qb/pacensc2023/qbj/", "nsc2024": "https://hdwhite.org/qb/tournaments/pacensc2024/qbj/"}
+urls = {"nsc2023": "https://hdwhite.org/qb/pacensc2023/json/", "nsc2024": "https://hdwhite.org/qb/tournaments/pacensc2024/json/"}
 
 pools = []
 app = Flask(__name__)
 app.config['DEBUG'] = True
 domain = 'https://pbds-39c532296638.herokuapp.com/'
+
+
+def get_games_from_json(tournament):
+    games = []
+    for f in os.listdir(f'data/{tournament}/games'):
+        if f.endswith('.json'):
+            with open(f'data/{tournament}/games/{f}', 'r') as file:
+                parsed = f.replace('.json', " ").split("_")
+                parsed[1] = parsed[1].replace("-", " ")
+                parsed[2] = parsed[2].replace("-", " ")
+                data = json.load(file)
+                rnd = int(parsed[0])
+                print(data.keys())
+                try:
+                    tuh = max([int(key) for key in data['tutotals'].keys()])
+                    team1 = data['team1']['name']
+                    team2 = data['team2']['name']
+                    team1tuscore = data['team1']['score'] - data['team1']['bonuses']
+                    team2tuscore = data['team2']['score'] - data['team2']['bonuses']
+                    team1bscore = data['team1']['bonuses']
+                    team2bscore = data['team2']['bonuses']
+                except KeyError:
+                    continue
+
+                games.append(pbds.Game(rnd, tuh, team1, team1tuscore, team1bscore, team2, team2tuscore, team2bscore))
+    return games
 
 
 def get_games(tournament):
@@ -149,7 +175,7 @@ def index(tournament, phase):
     filenames = loader.files_not_updated(filenames, f'data/{tournament}/games')
     loader.downloads(filenames, f'data/{tournament}/games')
 
-    games = get_games(tournament)
+    games = get_games_from_json(tournament)
 
     teams = generate_teams(tournament, phase.name)
     teams = get_teams(games, phase.start, phase.end, teams)
