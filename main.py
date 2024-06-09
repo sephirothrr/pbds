@@ -28,7 +28,11 @@ def get_games_from_json(tournament):
                 parsed = f.replace('.json', " ").split("_")
                 parsed[1] = parsed[1].replace("-", " ")
                 parsed[2] = parsed[2].replace("-", " ")
-                data = json.load(file)
+                try:
+                    data = json.load(file)
+                except Exception as e:
+                    print(file.readlines())
+                    continue
                 rnd = int(parsed[0])
                 # print(data.keys())
                 try:
