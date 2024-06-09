@@ -63,7 +63,7 @@ def read_google_sheet():
                 'result': result,
                 'round': str(values_range[row][3].lower().split(' ')[-1])
             }
-            print(protest)
+            # print(protest)
 
             protests.append(protest)
 

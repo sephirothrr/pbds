@@ -7,7 +7,7 @@ Maggie Walker A	17th - 24th
 University Lab	17th - 24th
 Livingston B	17th - 24th
 William Fremd	25th - 32nd
-McLean B	25th - 32nd
+Detroit Catholic Central A	25th - 32nd
 Thomas Jefferson B	25th - 32nd
 Beavercreek	25th - 32nd
 Thomas Jefferson C	25th - 32nd
@@ -19,7 +19,7 @@ Downingtown STEM	33rd - 40th
 Alabama Cyber Tech	33rd - 40th
 Walter Payton A	33rd - 40th
 McLean A	33rd - 40th
-Detroit Catholic Central A	33rd - 40th
+McLean B	33rd - 40th
 Northmont B	33rd - 40th
 Richard Montgomery B	33rd - 40th
 DuPage County AT	41st - 48th
@@ -34,7 +34,7 @@ Lindbergh	49th - 56th
 Fairfield County AT	49th - 56th
 Innovation Academy B	49th - 56th
 Detroit Catholic Central B	49th - 56th
-Hoover B	49th - 56th
+Carbondale	49th - 56th
 Durham AT	49th - 56th
 Bloomington	49th - 56th
 Stevenson A	49th - 56th
@@ -43,7 +43,7 @@ Walter Payton B	57th - 64th
 Freeman	57th - 64th
 Owensboro	57th - 64th
 Carl Sandburg	57th - 64th
-Carbondale	57th - 64th
+Hoover B	57th - 64th
 James W. Robinson	57th - 64th
 Maggie Walker C	57th - 64th
 Maggie Walker B	65th - 72nd
