@@ -95,6 +95,9 @@ class Pool:
             elif len(self.teams) == 8:
                 if brk[0].games != 7:
                     block_status = Status.PENDING
+                elif self.name not in ["Championship", "9th - 16th"]:
+                    print(self.name)
+                    block_status = Status.COMPLETE
                 else:
                     match len(brk):
                         case 1:
