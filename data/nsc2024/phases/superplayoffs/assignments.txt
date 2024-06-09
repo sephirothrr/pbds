@@ -1,72 +1,72 @@
-Northmont A	17th - 24th
-Georgetown Day	17th - 24th
-Thomas Jefferson D	17th - 24th
-Canyon Crest	17th - 24th
-Hoover A	17th - 24th
-Maggie Walker A	17th - 24th
-University Lab	17th - 24th
-Livingston B	17th - 24th
-William Fremd	25th - 32nd
-Detroit Catholic Central A	25th - 32nd
-Thomas Jefferson B	25th - 32nd
-Beavercreek	25th - 32nd
-Thomas Jefferson C	25th - 32nd
-Mexico	25th - 32nd
-Lightridge	25th - 32nd
-Great Valley	25th - 32nd
-Seven Lakes	33rd - 40th
-Downingtown STEM	33rd - 40th
-Alabama Cyber Tech	33rd - 40th
-Walter Payton A	33rd - 40th
-McLean A	33rd - 40th
-McLean B	33rd - 40th
-Northmont B	33rd - 40th
-Richard Montgomery B	33rd - 40th
-DuPage County AT	41st - 48th
-Okemos	41st - 48th
-Chattahoochee	41st - 48th
-West Point	41st - 48th
-Winston Churchill B	41st - 48th
-Detroit Catholic Central C	41st - 48th
-Hunter B	41st - 48th
-Solon	41st - 48th
-Lindbergh	49th - 56th
-Fairfield County AT	49th - 56th
-Innovation Academy B	49th - 56th
-Detroit Catholic Central B	49th - 56th
-Carbondale	49th - 56th
-Durham AT	49th - 56th
-Bloomington	49th - 56th
-Stevenson A	49th - 56th
-St. Thomas	57th - 64th
-Walter Payton B	57th - 64th
-Freeman	57th - 64th
-Owensboro	57th - 64th
-Carl Sandburg	57th - 64th
-Hoover B	57th - 64th
-James W. Robinson	57th - 64th
-Maggie Walker C	57th - 64th
-Maggie Walker B	65th - 72nd
-Norfolk Academic Guild	65th - 72nd
-Cincinnati Hills	65th - 72nd
-Elkhorn North	65th - 72nd
-St. Xavier	65th - 72nd
-Saint Joseph	65th - 72nd
-Stevenson B	65th - 72nd
-Choate Rosemary Hall	65th - 72nd
-Winston Churchill A	9th - 16th
-St. Mark's	9th - 16th
-Innovation Academy A	9th - 16th
-Thomas Jefferson A	9th - 16th
-Strake Jesuit	9th - 16th
-Belmont	9th - 16th
-Lambert	9th - 16th
-Johns Creek B	9th - 16th
-Richard Montgomery A	Championship
-Kinkaid	Championship
-Johns Creek A	Championship
-Barrington	Championship
-Hunter A	Championship
-Hastings	Championship
-Livingston A	Championship
-Heights	Championship
+St. Mark's	1	Championship
+Richard Montgomery A	2	Championship
+Barrington	3	Championship
+Johns Creek A	4	Championship
+Hastings	5	Championship
+Hunter A	6	Championship
+Livingston A	7	Championship
+University Lab	8	Championship
+Kinkaid	9	9th - 16th
+Winston Churchill A	10	9th - 16th
+Thomas Jefferson A	11	9th - 16th
+Innovation Academy A	12	9th - 16th
+Hoover A	13	9th - 16th
+Belmont	14	9th - 16th
+Lambert	15	9th - 16th
+Heights	16	9th - 16th
+Northmont A	17	17th - 24th
+Georgetown Day	18	17th - 24th
+Canyon Crest	19	17th - 24th
+Thomas Jefferson D	20	17th - 24th
+Maggie Walker A	21	17th - 24th
+Strake Jesuit	22	17th - 24th
+Livingston B	23	17th - 24th
+Johns Creek B	24	17th - 24th
+William Fremd	25	25th - 32nd
+Seven Lakes	26	25th - 32nd
+Alabama Cyber Tech	27	25th - 32nd
+Walter Payton A	28	25th - 32nd
+Detroit Catholic Central A	29	25th - 32nd
+McLean A	30	25th - 32nd
+Richard Montgomery B	31	25th - 32nd
+Great Valley	32	25th - 32nd
+Downingtown STEM	33	33rd - 40th
+McLean B	34	33rd - 40th
+Thomas Jefferson B	35	33rd - 40th
+Beavercreek	36	33rd - 40th
+Mexico	37	33rd - 40th
+Thomas Jefferson C	38	33rd - 40th
+Northmont B	39	33rd - 40th
+Lightridge	40	33rd - 40th
+DuPage County AT	41	41st - 48th
+Okemos	42	41st - 48th
+Chattahoochee	43	41st - 48th
+West Point	44	41st - 48th
+Winston Churchill B	45	41st - 48th
+Detroit Catholic Central C	46	41st - 48th
+Solon	47	41st - 48th
+Hunter B	48	41st - 48th
+Lindbergh	49	49th - 56th
+St. Thomas	50	49th - 56th
+Innovation Academy B	51	49th - 56th
+Detroit Catholic Central B	52	49th - 56th
+Carbondale	53	49th - 56th
+Durham AT	54	49th - 56th
+Bloomington	55	49th - 56th
+Stevenson A	56	49th - 56th
+Walter Payton B	57	57th - 64th
+Fairfield County AT	58	57th - 64th
+Owensboro	59	57th - 64th
+Cincinnati Hills	60	57th - 64th
+St. Xavier	61	57th - 64th
+Hoover B	62	57th - 64th
+Choate Rosemary Hall	63	57th - 64th
+James W. Robinson	64	57th - 64th
+Maggie Walker B	65	65th - 72nd
+Norfolk Academic Guild	66	65th - 72nd
+Freeman	67	65th - 72nd
+Elkhorn North	68	65th - 72nd
+Saint Joseph	69	65th - 72nd
+Carl Sandburg	70	65th - 72nd
+Maggie Walker C	71	65th - 72nd
+Stevenson B	72	65th - 72nd
