@@ -32,6 +32,8 @@ def get_games_from_json(tournament):
                 rnd = int(parsed[0])
                 print(data.keys())
                 try:
+                    if data['status'] != "F":
+                        continue
                     tuh = max([int(key) for key in data['tutotals'].keys()])
                     team1 = data['team1']['name']
                     team2 = data['team2']['name']
