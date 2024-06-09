@@ -30,7 +30,7 @@ def get_games_from_json(tournament):
                 parsed[2] = parsed[2].replace("-", " ")
                 data = json.load(file)
                 rnd = int(parsed[0])
-                print(data.keys())
+                # print(data.keys())
                 try:
                     if data['status'] != "F":
                         continue
@@ -130,9 +130,11 @@ def get_pools(tournament, phase, teams):
             pools.append(pbds.Pool(p))
     with open(f'data/{tournament}/phases/{phase}/assignments.txt', 'r') as file:
         assignments = file.read().splitlines()
-        # print(poolnames)
+        print(poolnames)
         for a in assignments:
+            print(a)
             team, pool = a.split('\t')[0], a.split('\t')[1]
+            print(team, pool)
             pools[poolnames.index(pool)].teams.append(teams[team])
     return pools
 
@@ -198,12 +200,12 @@ def index(tournament, phase):
                 teams = process_game(game, teams)
 
     print("Done!")
-    print(f'Recording protests in rounds {phase.start} to {phase.end}')
+    # print(f'Recording protests in rounds {phase.start} to {phase.end}')
     for protest in all_protests:
         # print(protest['result'])
         # print(f"Protest in round {protest['round']}")
         if protest['round'] in [str(x) for x in range(phase.start, phase.end + 1)]:
-            print(f"Recording protest in round {protest['round']}")
+            # print(f"Recording protest in round {protest['round']}")
             if protest['result'] != "MOOT" and protest['result'] != "RESOLVED":
                 print(f'Recording live protest between {protest["team1"]} and {protest["team2"]}')
                 teams[protest['team1']].protest = True
