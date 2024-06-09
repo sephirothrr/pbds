@@ -134,11 +134,11 @@ def get_pools(tournament, phase, teams):
             pools.append(pbds.Pool(p))
     with open(f'data/{tournament}/phases/{phase}/assignments.txt', 'r') as file:
         assignments = file.read().splitlines()
-        print(poolnames)
+        # print(poolnames)
         for a in assignments:
-            print(a)
+            # print(a)
             team, pool = a.split('\t')[0], a.split('\t')[1]
-            print(team, pool)
+            # print(team, pool)
             pools[poolnames.index(pool)].teams.append(teams[team])
     return pools
 
@@ -241,7 +241,7 @@ def initialize(tournament, phase):
 
     for pool in pools:
         url = url_for('pool', tournament=tournament, phase=phase, bracket=pool.name, _external=True)
-        print(url)
+        # print(url)
         slackclient.sendBrackets([pool.name])
         time.sleep(1)
         slackclient.sendRecordConfirmation(pool.name, f"Please confirm your bracket's records and protest status at {url}")
@@ -254,8 +254,8 @@ def initialize(tournament, phase):
 @app.route('/slackify', methods=['POST'])
 def slackify():
     jsonData = request.get_json()
-    print(jsonData)
-    print(jsonData["bracket"])
+    # print(jsonData)
+    # print(jsonData["bracket"])
     slackclient = slack.SlackClient("record-confirmation", slack.getToken())
     slackclient.sendRecordConfirmation(jsonData["bracket"], jsonData["message"])
     return
