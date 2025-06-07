@@ -12,7 +12,8 @@ import protests
 from flask import Flask, send_from_directory, redirect, url_for, request
 from flask import render_template
 
-urls = {"nsc2023": "https://hdwhite.org/qb/pacensc2023/json/", "nsc2024": "https://hdwhite.org/qb/tournaments/pacensc2024/json/"}
+urls = {"nsc2023": "https://hdwhite.org/qb/pacensc2023/json/", "nsc2024": "https://hdwhite.org/qb/tournaments/pacensc2024/json/",
+        "nsc2025": "https://hdwhite.org/qb/tournaments/pacensc2025/json/"}
 
 pools = []
 app = Flask(__name__)
@@ -175,7 +176,7 @@ def index(tournament, phase):
 
     # tournament = 'nsc2023'
 
-    statsurl = 'https://hdwhite.org/qb/tournaments/pacensc2024/qbj/'
+    statsurl = 'https://hdwhite.org/qb/tournaments/pacensc2025/qbj/'
 
     loader = downloader.Downloader(urls[tournament], start_round=phase.start, end_round=phase.end)
 

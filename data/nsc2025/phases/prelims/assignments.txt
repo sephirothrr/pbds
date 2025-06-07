@@ -1,0 +1,84 @@
+Yukon A	Anatolia
+Uni School of Nashville A	Anatolia
+Uni of Illinois Laboratory	Anatolia
+Adlai E. Stevenson B	Anatolia
+Saint Joseph	Anatolia
+Centennial B	Anatolia
+Fremd	Borneo
+Northmont	Borneo
+Thomas Jefferson B	Borneo
+Chattahoochee B	Borneo
+Carmel B	Borneo
+White Pigeon	Borneo
+Hunter A	Corsica
+Walker	Corsica
+West Point	Corsica
+Walter Payton A	Corsica
+Lee's Summit	Corsica
+Thomas Jefferson D	Corsica
+Strake Jesuit A	Danube
+Chattahoochee A	Danube
+Westwood	Danube
+Quince Orchard	Danube
+Lincoln-Way East A	Danube
+Virginia	Danube
+Innovation Academy A	Everest
+Carmel A	Everest
+Strake Jesuit B	Everest
+Russell	Everest
+Northside College Prep	Everest
+Winston Churchill B	Everest
+Belmont	Fuji
+Montgomery Blair A	Fuji
+Edina	Fuji
+Innovation Academy B	Fuji
+Herron	Fuji
+Lincoln-Way East B	Fuji
+Adlai E. Stevenson A	Ganges
+Parkway West	Ganges
+Richard Montgomery	Ganges
+Okemos	Ganges
+Milton	Ganges
+Yukon B	Ganges
+Lexington	Hokkaido
+Eastchester	Hokkaido
+Centennial A	Hokkaido
+Solon	Hokkaido
+Barrington	Hokkaido
+Coronado	Hokkaido
+Alabama Cyber Tech	Iberia
+Classen SAS	Iberia
+Lambert B	Iberia
+Park Tudor	Iberia
+Thomas Jefferson C	Iberia
+Homewood-Flossmoor	Iberia
+Detroit Catholic Central A	Java
+Johns Creek	Java
+Winston Churchill A	Java
+Uni School of Nashville B	Java
+Kane County AT	Java
+Page	Java
+Audrain County AT	Kamchatka
+Wayzata	Kamchatka
+Saratoga	Kamchatka
+Carl Sandburg	Kamchatka
+Detroit Catholic Central B	Kamchatka
+Thomas Jefferson E	Kamchatka
+Lambert A	Luzon
+Seven Lakes	Luzon
+Hinsdale Central A	Luzon
+Montgomery Blair B	Luzon
+Hunter B	Luzon
+North Quincy	Luzon
+Northview	Nile
+Downingtown STEM	Nile
+Grosse Pointe South	Nile
+Georgetown Day	Nile
+Irvington	Nile
+Walter Payton B	Nile
+Thomas Jefferson A	Orinoco
+Great Valley	Orinoco
+Lindbergh	Orinoco
+Fairfield County AT	Orinoco
+Glenbrook South	Orinoco
+Detroit Catholic Central C	Orinoco

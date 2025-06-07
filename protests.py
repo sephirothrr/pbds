@@ -12,7 +12,7 @@ class ProtestStatus(enum.Enum):
 
 
 def read_google_sheet():
-    spreadsheet_id = '1EniThOdVjqbONztWdg1f0CwaAHsZNsLVyyDf1gSJf38'
+    spreadsheet_id = '1wNSMgGhnMjeJw05fe327u2XqFtPL6MsOXxqNkjVod8c'
     sheet_name = 'Form Responses 1'
     credentials_json_path = 'google-credentials.json'
 
