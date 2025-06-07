@@ -155,11 +155,11 @@ class Phase:
             self.end = 5
         elif name == "playoffs":
             self.start = 6
-            self.end = 10
+            self.end = 12
         elif name == "superplayoffs":
-            self.start = 11
-            self.end = 16
-            self.carry = [6, 7, 8, 9, 10]
+            self.start = 13
+            self.end = 18
+            self.carry = [6, 7, 8, 9, 10, 11, 12]
 
 
 @app.route('/favicon.ico')

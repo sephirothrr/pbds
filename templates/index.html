@@ -24,12 +24,16 @@
                             alert(bracket + " Standings sent to Slack!");
                         }
                     })};
+                function clipify(text) {
+                    navigator.clipboard.writeText(text);
+                    alert("Copied to clipboard: \n" + text);
+                };
         </script>
     <div id="standings">
         <div class="flexy">
         {% for pool in pools %}
           <div class="tableblock">
-              <h3>{{ pool.name }} <a href="javascript:void(0);" onclick="alert('{{ pool.name + "\n" + "\n".join(pool._status) }}');"><img src="/static/images/slack.svg"></a> </h3>
+              <h3>{{ pool.name }} <a href="javascript:void(0);" onclick="clipify(`{{ pool.name + "\n" + "\n".join(pool._status) }}`)"><img src="/static/images/slack.svg"></a> </h3>
               <table>
                 <thead>
                     <tr>
