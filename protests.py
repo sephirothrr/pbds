@@ -9,7 +9,7 @@ class ProtestStatus(enum.Enum):
     REJECTED = "REJECTED"
     MOOT = "MOOT"
     RESOLVED = "RESOLVED"
-
+    DELIVERED = "DELIVERED"
 
 def read_google_sheet():
     spreadsheet_id = '1wNSMgGhnMjeJw05fe327u2XqFtPL6MsOXxqNkjVod8c'
@@ -36,7 +36,7 @@ def read_google_sheet():
     start_row = 1
     end_row = 200
     start_column = 1
-    end_column = 20
+    end_column = 21
 
     r1c1_start = f'R{start_row}C{start_column}'
     r1c1_end = f'R{end_row}C{end_column}'
@@ -49,12 +49,26 @@ def read_google_sheet():
     for row in range(1, len(values_range)):
 
         result = ''
+        delivery = ''
 
-        # print(len(values_range[row]))
+        print(len(values_range[row]))
         if len(values_range[row]) <= 19:
             result = ProtestStatus.PENDING.value
+        elif len(values_range[row]) >= 21:
+            delivery = ProtestStatus(values_range[row][20]).value
+            print(delivery)
+            if delivery == ProtestStatus.DELIVERED.value:
+                result = ProtestStatus.RESOLVED.value
         else:
             result = ProtestStatus(values_range[row][19]).value
+        if result != ProtestStatus.MOOT.value and result != ProtestStatus.RESOLVED.value:
+            print(result)
+            print(delivery)
+            if delivery == ProtestStatus.DELIVERED.value:
+                result = ProtestStatus.RESOLVED.value
+
+
+
 
         if len(values_range[row]) >= 6:
             protest = {

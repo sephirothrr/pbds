@@ -212,6 +212,7 @@ def index(tournament, phase):
         if protest['round'] in [str(x) for x in range(phase.start, phase.end + 1)]:
             # print(f"Recording protest in round {protest['round']}")
             if protest['result'] != "MOOT" and protest['result'] != "RESOLVED":
+                print(protest['result'])
                 print(f'Recording live protest between {protest["team1"]} and {protest["team2"]}')
                 teams[protest['team1']].protest = True
                 teams[protest['team2']].protest = True
@@ -255,8 +256,8 @@ def initialize(tournament, phase):
 @app.route('/slackify', methods=['POST'])
 def slackify():
     jsonData = request.get_json()
-    # print(jsonData)
-    # print(jsonData["bracket"])
+    print(jsonData)
+    print(jsonData["bracket"])
     slackclient = slack.SlackClient("record-confirmation", slack.getToken())
     slackclient.sendRecordConfirmation(jsonData["bracket"], jsonData["message"])
     return
