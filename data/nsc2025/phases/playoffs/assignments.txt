@@ -1,0 +1,84 @@
+Adlai E. Stevenson B	Addams
+Belmont	Addams
+Hinsdale Central A	Addams
+Lexington	Addams
+Northmont	Addams
+Northview	Addams
+Strake Jesuit B	Addams
+Adlai E. Stevenson A	Bradbury
+Fremd	Bradbury
+Johns Creek	Bradbury
+Montgomery Blair A	Bradbury
+Park Tudor	Bradbury
+Strake Jesuit A	Bradbury
+Walter Payton A	Bradbury
+Alabama Cyber Tech	Chance
+Hunter A	Chance
+Lambert A	Chance
+Lindbergh	Chance
+Richard Montgomery	Chance
+Wayzata	Chance
+Uni of Illinois Laboratory	Chance
+Audrain County AT	Darrow
+Detroit Catholic Central A	Darrow
+Eastchester	Darrow
+Grosse Pointe South	Darrow
+Innovation Academy A	Darrow
+Thomas Jefferson A	Darrow
+Westwood	Darrow
+Uni School of Nashville B	Ellsworth
+Barrington	Ellsworth
+Carmel A	Ellsworth
+Carmel B	Ellsworth
+Centennial B	Ellsworth
+Classen SAS	Ellsworth
+Saratoga	Ellsworth
+Chattahoochee A	Friedman
+Downingtown STEM	Friedman
+Glenbrook South	Friedman
+Montgomery Blair B	Friedman
+Northside College Prep	Friedman
+Parkway West	Friedman
+Thomas Jefferson B	Friedman
+Carl Sandburg	Goodman
+Georgetown Day	Goodman
+Great Valley	Goodman
+Innovation Academy B	Goodman
+Quince Orchard	Goodman
+Seven Lakes	Goodman
+Walker	Goodman
+Uni School of Nashville A	Hansberry
+Centennial A	Hansberry
+Edina	Hansberry
+Lambert B	Hansberry
+Milton	Hansberry
+West Point	Hansberry
+Winston Churchill A	Hansberry
+Chattahoochee B	Jemison
+Homewood-Flossmoor	Jemison
+Thomas Jefferson D	Jemison
+Thomas Jefferson E	Jemison
+Virginia	Jemison
+Winston Churchill B	Jemison
+Yukon A	Jemison
+Coronado	Krause
+Herron	Krause
+Hunter B	Krause
+Lincoln-Way East A	Krause
+Russell	Krause
+Saint Joseph	Krause
+Walter Payton B	Krause
+Detroit Catholic Central B	Leo XIV
+Detroit Catholic Central C	Leo XIV
+Irvington	Leo XIV
+Lincoln-Way East B	Leo XIV
+Page	Leo XIV
+Thomas Jefferson C	Leo XIV
+Yukon B	Leo XIV
+Fairfield County AT	Morello
+Kane County AT	Morello
+Lee's Summit	Morello
+North Quincy	Morello
+Okemos	Morello
+Solon	Morello
+White Pigeon	Morello

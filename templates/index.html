@@ -29,7 +29,7 @@
         <div class="flexy">
         {% for pool in pools %}
           <div class="tableblock">
-              <h3>{{ pool.name }} <a href="javascript:void(0);" onclick="slackify('{{ pool.name }}', `{{ "\n".join(pool._status) }}`)"><img src="/static/images/slack.svg"></a> </h3>
+              <h3>{{ pool.name }} <a href="javascript:void(0);" onclick="alert('{{ pool.name + "\n" + "\n".join(pool._status) }}');"><img src="/static/images/slack.svg"></a> </h3>
               <table>
                 <thead>
                     <tr>
