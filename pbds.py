@@ -34,7 +34,7 @@ class Team:
         self.position = -1
         self.status = Status.UNCHECKED
         self.color = "white"
-        self.protest = False
+        self.protest = 0
 
 
 class Game:
@@ -94,6 +94,24 @@ class Pool:
                             block_status = Status.ERROR
             elif len(self.teams) == 8:
                 if brk[0].games != 7:
+                    block_status = Status.PENDING
+                elif self.name not in ["Championship", "9th - 16th"]:
+                    print(self.name)
+                    block_status = Status.COMPLETE
+                else:
+                    match len(brk):
+                        case 1:
+                            block_status = Status.COMPLETE
+                        case 2:
+                            block_status = Status.TWO_WAY_TIEBREAK
+                        case 3:
+                            block_status = Status.THREE_WAY_TIEBREAK
+                        case 4:
+                            block_status = Status.FOUR_ACROSS_TWO
+                        case _:
+                            block_status = Status.ERROR
+            elif len(self.teams) == 7:
+                if brk[0].games != 6:
                     block_status = Status.PENDING
                 elif self.name not in ["Championship", "9th - 16th"]:
                     print(self.name)
