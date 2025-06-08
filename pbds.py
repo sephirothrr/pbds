@@ -116,16 +116,21 @@ class Pool:
                 elif self.name not in ["Championship", "9th - 16th"]:
                     print(self.name)
                     block_status = Status.COMPLETE
-                else:
                     match len(brk):
                         case 1:
                             block_status = Status.COMPLETE
                         case 2:
-                            block_status = Status.TWO_WAY_TIEBREAK
+                            if not rank % 2:
+                                block_status = Status.TWO_WAY_TIEBREAK
+                            else:
+                                block_status = Status.TIED_COMPLETE
                         case 3:
                             block_status = Status.THREE_WAY_TIEBREAK
                         case 4:
-                            block_status = Status.FOUR_ACROSS_TWO
+                            if rank % 2:
+                                block_status = Status.FOUR_ACROSS_TWO
+                            else:
+                                block_status = Status.FOUR_ACROSS_THREE
                         case _:
                             block_status = Status.ERROR
 
