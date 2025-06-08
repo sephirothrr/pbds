@@ -92,10 +92,13 @@ class Pool:
                                 block_status = Status.FOUR_ACROSS_THREE
                         case _:
                             block_status = Status.ERROR
+            elif len(self.teams) == 4:
+                print(self.name)
+                block_status = Status.COMPLETE
             elif len(self.teams) == 8:
                 if brk[0].games != 7:
                     block_status = Status.PENDING
-                elif self.name not in ["Championship", "9th - 16th"]:
+                elif self.name not in ["Championship", "9th - 16th", "16-24th"]:
                     print(self.name)
                     block_status = Status.COMPLETE
                 else:
